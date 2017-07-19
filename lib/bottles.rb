@@ -17,21 +17,25 @@ class Bottles
 
     case number
     when 0
+      next_inventory = Inventory.new(vessel, 99)
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Go to the store and buy some more, " +
-      "99 #{vessel.pluralize} on the wall.\n"
+      "#{next_inventory} on the wall.\n"
     when 1
+      next_inventory = Inventory.new(vessel, number - 1)
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Take it down and pass it around, " +
-      "no more #{vessel.pluralize} on the wall.\n"
+      "#{next_inventory} on the wall.\n"
     when 2
+      next_inventory = Inventory.new(vessel, number - 1)
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Take one down and pass it around, " +
-      "1 #{vessel} on the wall.\n"
+      "#{next_inventory} on the wall.\n"
     else
+      next_inventory = Inventory.new(vessel, number - 1)
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Take one down and pass it around, " +
-      "#{number-1} #{vessel.pluralize} on the wall.\n"
+      "#{next_inventory} on the wall.\n"
     end
   end
 
