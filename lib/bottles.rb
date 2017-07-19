@@ -1,3 +1,5 @@
+require_relative "./vessel"
+
 class Bottles
 
   def song
@@ -9,27 +11,29 @@ class Bottles
   end
 
   def verse(number)
+    vessel = Vessel.new("bottle", "beer")
+    
     case number
     when 0
-      "No more bottles of beer on the wall, " +
-      "no more bottles of beer.\n" +
+      "No more #{vessel.pluralize} on the wall, " +
+      "no more #{vessel.pluralize}.\n" +
       "Go to the store and buy some more, " +
-      "99 bottles of beer on the wall.\n"
+      "99 #{vessel.pluralize} on the wall.\n"
     when 1
-      "1 bottle of beer on the wall, " +
-      "1 bottle of beer.\n" +
+      "1 #{vessel} on the wall, " +
+      "1 #{vessel}.\n" +
       "Take it down and pass it around, " +
-      "no more bottles of beer on the wall.\n"
+      "no more #{vessel.pluralize} on the wall.\n"
     when 2
-      "2 bottles of beer on the wall, " +
-      "2 bottles of beer.\n" +
+      "2 #{vessel.pluralize} on the wall, " +
+      "2 #{vessel.pluralize}.\n" +
       "Take one down and pass it around, " +
-      "1 bottle of beer on the wall.\n"
+      "1 #{vessel} on the wall.\n"
     else
-      "#{number} bottles of beer on the wall, " +
-      "#{number} bottles of beer.\n" +
+      "#{number} #{vessel.pluralize} on the wall, " +
+      "#{number} #{vessel.pluralize}.\n" +
       "Take one down and pass it around, " +
-      "#{number-1} bottles of beer on the wall.\n"
+      "#{number-1} #{vessel.pluralize} on the wall.\n"
     end
   end
 
