@@ -7,7 +7,15 @@ class Song
   end
 
   def verses
-    starting.downto(ending).map {|i| verse(i)}
+    current_count = starting
+    result = []
+
+    while current_count >= ending
+      result << verse(current_count)
+      current_count -= 1
+    end
+
+    result
   end
 
   def verse(number)
