@@ -26,11 +26,6 @@ class Bottles
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Take it down and pass it around, " +
       "#{next_inventory} on the wall.\n"
-    when 2
-      next_inventory = Inventory.new(vessel, number - 1)
-      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
-      "Take one down and pass it around, " +
-      "#{next_inventory} on the wall.\n"
     else
       next_inventory = Inventory.new(vessel, number - 1)
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
