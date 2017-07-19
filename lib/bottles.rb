@@ -15,25 +15,37 @@ class Bottles
     
     case number
     when 0
-      "No more #{vessel.pluralize} on the wall, " +
-      "no more #{vessel.pluralize}.\n" +
-      "Go to the store and buy some more, " +
-      "99 #{vessel.pluralize} on the wall.\n"
+      how_many = "No more"
+      next_how_many = 99
     when 1
-      "1 #{vessel} on the wall, " +
-      "1 #{vessel}.\n" +
-      "Take it down and pass it around, " +
-      "no more #{vessel.pluralize} on the wall.\n"
-    when 2
-      "2 #{vessel.pluralize} on the wall, " +
-      "2 #{vessel.pluralize}.\n" +
-      "Take one down and pass it around, " +
-      "1 #{vessel} on the wall.\n"
+      how_many = 1
+      next_how_many = "No more"
     else
-      "#{number} #{vessel.pluralize} on the wall, " +
-      "#{number} #{vessel.pluralize}.\n" +
+      how_many = number
+      next_how_many = number - 1
+    end
+
+    case number
+    when 0
+      "#{how_many} #{vessel.pluralize} on the wall, " +
+      "#{how_many} #{vessel.pluralize}.\n" +
+      "Go to the store and buy some more, " +
+      "#{next_how_many} #{vessel.pluralize} on the wall.\n"
+    when 1
+      "#{how_many} #{vessel} on the wall, " +
+      "#{how_many} #{vessel}.\n" +
+      "Take it down and pass it around, " +
+      "#{next_how_many} #{vessel.pluralize} on the wall.\n"
+    when 2
+      "#{how_many} #{vessel.pluralize} on the wall, " +
+      "#{how_many} #{vessel.pluralize}.\n" +
       "Take one down and pass it around, " +
-      "#{number-1} #{vessel.pluralize} on the wall.\n"
+      "#{next_how_many} #{vessel.pluralize} on the wall.\n"
+    else
+      "#{how_many} #{vessel.pluralize} on the wall, " +
+      "#{how_many} #{vessel.pluralize}.\n" +
+      "Take one down and pass it around, " +
+      "#{next_how_many} #{vessel.pluralize} on the wall.\n"
     end
   end
 
