@@ -27,15 +27,14 @@ class Bottles
     case number
     when 0
       next_inventory = Inventory.new(vessel, 99)
-      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
-      "#{command}, " +
-      "#{next_inventory} on the wall.\n"
     else
       next_inventory = Inventory.new(vessel, number - 1)
-      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
-      "#{command}, " +
-      "#{next_inventory} on the wall.\n"
     end
+
+    "#{inventory.to_s.capitalize} on the wall, " +
+    "#{inventory}.\n" +
+    "#{command}, " +
+    "#{next_inventory} on the wall.\n"
   end
 
 end
