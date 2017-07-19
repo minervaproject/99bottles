@@ -19,11 +19,9 @@ class Bottles
     when 0
       command = "Go to the store and buy some more"
       next_inventory = Inventory.new(vessel, 99)
-    when 1
-      command = "Take it down and pass it around"
-      next_inventory = Inventory.new(vessel, number - 1)
     else
-      command = "Take one down and pass it around"
+      pronoun = number == 1 ? "it" : "one"
+      command = "Take #{pronoun} down and pass it around"
       next_inventory = Inventory.new(vessel, number - 1)
     end
 
