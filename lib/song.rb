@@ -11,30 +11,32 @@ class Song
     result = []
 
     while current_count >= ending
-      result << verse(current_count)
+
+      vessel = Vessel.new("bottle", "beer")
+      inventory = Inventory.new(vessel, current_count)
+
+      case current_count
+      when 0
+        command = "Go to the store and buy some more"
+        next_inventory = Inventory.new(vessel, 99)
+      else
+        pronoun = current_count == 1 ? "it" : "one"
+        command = "Take #{pronoun} down and pass it around"
+        next_inventory = Inventory.new(vessel, current_count - 1)
+      end
+
+      verse = "#{inventory.to_s.capitalize} on the wall, " +
+        "#{inventory}.\n" +
+        "#{command}, " +
+        "#{next_inventory} on the wall.\n"
+
+      result << verse
+
       current_count -= 1
+
     end
 
     result
   end
 
-  def verse(number)
-    vessel = Vessel.new("bottle", "beer")
-    inventory = Inventory.new(vessel, number)
-
-    case number
-    when 0
-      command = "Go to the store and buy some more"
-      next_inventory = Inventory.new(vessel, 99)
-    else
-      pronoun = number == 1 ? "it" : "one"
-      command = "Take #{pronoun} down and pass it around"
-      next_inventory = Inventory.new(vessel, number - 1)
-    end
-
-    "#{inventory.to_s.capitalize} on the wall, " +
-      "#{inventory}.\n" +
-      "#{command}, " +
-      "#{next_inventory} on the wall.\n"
-  end
 end
