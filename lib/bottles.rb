@@ -1,4 +1,5 @@
 require_relative "./vessel"
+require_relative "./inventory"
 
 class Bottles
 
@@ -12,26 +13,23 @@ class Bottles
 
   def verse(number)
     vessel = Vessel.new("bottle", "beer")
-    
+    inventory = Inventory.new(vessel, number)
+
     case number
     when 0
-      "No more #{vessel.pluralize} on the wall, " +
-      "no more #{vessel.pluralize}.\n" +
+      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Go to the store and buy some more, " +
       "99 #{vessel.pluralize} on the wall.\n"
     when 1
-      "1 #{vessel} on the wall, " +
-      "1 #{vessel}.\n" +
+      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Take it down and pass it around, " +
       "no more #{vessel.pluralize} on the wall.\n"
     when 2
-      "2 #{vessel.pluralize} on the wall, " +
-      "2 #{vessel.pluralize}.\n" +
+      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Take one down and pass it around, " +
       "1 #{vessel} on the wall.\n"
     else
-      "#{number} #{vessel.pluralize} on the wall, " +
-      "#{number} #{vessel.pluralize}.\n" +
+      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
       "Take one down and pass it around, " +
       "#{number-1} #{vessel.pluralize} on the wall.\n"
     end
