@@ -17,19 +17,23 @@ class Bottles
 
     case number
     when 0
+      command = "Go to the store and buy some more"
+    when 1
+      command = "Take it down and pass it around"
+    else
+      command = "Take one down and pass it around"
+    end
+
+    case number
+    when 0
       next_inventory = Inventory.new(vessel, 99)
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
-      "Go to the store and buy some more, " +
-      "#{next_inventory} on the wall.\n"
-    when 1
-      next_inventory = Inventory.new(vessel, number - 1)
-      "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
-      "Take it down and pass it around, " +
+      "#{command}, " +
       "#{next_inventory} on the wall.\n"
     else
       next_inventory = Inventory.new(vessel, number - 1)
       "#{inventory.to_s.capitalize} on the wall, #{inventory}.\n" +
-      "Take one down and pass it around, " +
+      "#{command}, " +
       "#{next_inventory} on the wall.\n"
     end
   end
